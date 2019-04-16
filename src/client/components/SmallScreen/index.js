@@ -6,15 +6,12 @@ import { connect } from 'react-redux';
 import './index.css';
 
 class SmallScreen extends PureComponent {
-  selectSpeaker = (id) => {
-
-  }
-
   render() {
-    const { config, selectSpeaker } = this.props;
+    const { config, selectSpeaker, speaker: currentSpeakerId } = this.props;
 
     const { timing } = config;
     if (!timing) return null;
+
 
     return (
       <div className="smallscreen">
@@ -22,7 +19,11 @@ class SmallScreen extends PureComponent {
           {
             timing.map(({ id, speaker, theme, time }) => {
               return (
-                <div className="speech" key={id} onClick={selectSpeaker}>
+                <div
+                  key={id}
+                  className={classNames({speech: true, selected: id === currentSpeakerId})}
+                  onClick={() => selectSpeaker(id)}
+                >
                   { speaker && <div className="speaker">{speaker}</div> }
                   <div className={classNames({theme: true, bigger: !speaker})}>{theme}</div>
                   <div className="time">
@@ -45,10 +46,9 @@ SmallScreen.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps');
-  const { config } = state.server;
+  const { config, speaker } = state.server;
 
-  return { config };
+  return { config, speaker };
 };
 
 const mapDispatchToProps = dispatch => (

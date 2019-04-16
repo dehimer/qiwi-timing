@@ -28,6 +28,10 @@ server.listen(port, () => {
   console.log(`Server is ran on : http://localhost:${port}`);
 });
 
+const state = {
+  speaker: null,
+};
+
 
 // SOCKETIO
 const io = socketIO();
@@ -37,11 +41,14 @@ io.on('connection', (socket) => {
   can.emit('config:sync', socket);
 
   socket.on('action', (action) => {
+    console.log('action');
+    console.log(action);
     const { type, payload } = action;
     switch (type) {
-      // case 'server/send':
-      //   can.emit('photo:send', data);
-      //   break;
+      case 'server/selectSpeaker':
+        const id = payload;
+        can.emit('speaker:select', id);
+        break;
       default: console.log(`Unknown action ${type}`);
     }
   });
@@ -50,4 +57,10 @@ io.on('connection', (socket) => {
 can.on('config:sync', (socket = io) => {
   console.log('config:sync');
   socket.emit('action', { type: 'config', payload: config });
+});
+
+can.on('speaker:select', (id, socket = io) => {
+  console.log(`speaker:select ${id}`);
+  state.speaker = id;
+  socket.emit('action', { type: 'speaker:selected', payload: id });
 });
