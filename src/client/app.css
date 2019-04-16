@@ -1,8 +1,24 @@
-h1 {
-  color: green;
+@font-face {
+    font-family: "Museo-Sans-Cyrl";
+    src: url("/public/fonts/Museo-Sans-Cyrl/MuseoSansCyrl.otf") format("opentype");
 }
 
-body {
-  text-align: center;
-  margin: auto;
+@font-face {
+    font-family: "Museo-Sans-Cyrl_0";
+    src: url("/public/fonts/Museo-Sans-Cyrl/MuseoSansCyrl_0.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Museo-Sans-Cyrl_1";
+    src: url("/public/fonts/Museo-Sans-Cyrl/MuseoSansCyrl_1.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Museo-Sans-Cyrl_2";
+    src: url("/public/fonts/Museo-Sans-Cyrl/MuseoSansCyrl_2.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Museo-Sans-Cyrl_3";
+    src: url("/public/fonts/Museo-Sans-Cyrl/MuseoSansCyrl_3.otf") format("opentype");
 }
