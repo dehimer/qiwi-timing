@@ -40,7 +40,8 @@ const config = {
       time: ['21:20', '22:30'],
       theme: 'СВОБОДНОЕ ОБЩЕНИЕ',
     },
-  ]
+  ],
+  autoUnselectTime: 10
 };
 
 if (typeof module !== 'undefined' && module.exports) {

@@ -55,12 +55,33 @@ io.on('connection', (socket) => {
 });
 
 can.on('config:sync', (socket = io) => {
-  console.log('config:sync');
   socket.emit('action', { type: 'config', payload: config });
 });
 
+
+const updateUnselectTimeout = (function () {
+  let unselectSpeakerTimeoutF;
+  return (id) => {
+    if (unselectSpeakerTimeoutF) {
+      clearTimeout(unselectSpeakerTimeoutF);
+      unselectSpeakerTimeoutF = null;
+    }
+
+    if (id) {
+      unselectSpeakerTimeoutF = setTimeout(() => {
+        clearTimeout(unselectSpeakerTimeoutF);
+        unselectSpeakerTimeoutF = null;
+
+        can.emit('speaker:select', null);
+      }, config.autoUnselectTime*1000*60)
+    }
+  }
+})();
+
+
 can.on('speaker:select', (id, socket = io) => {
-  console.log(`speaker:select ${id}`);
   state.speaker = id;
   socket.emit('action', { type: 'speaker:selected', payload: id });
+
+  updateUnselectTimeout(id);
 });
