@@ -80,6 +80,10 @@ const updateUnselectTimeout = (function () {
 
 
 can.on('speaker:select', (id, socket = io) => {
+  if (state.speaker === id) {
+    id = null;
+  }
+
   state.speaker = id;
   socket.emit('action', { type: 'speaker:selected', payload: id });
 
