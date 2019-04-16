@@ -14,11 +14,21 @@ class SmallScreen extends PureComponent {
 
     return (
       <div className="smallscreen">
-        {
-          timing.map(({ theme, time }) => {
-            return <div key={time[0]}>{theme}</div>
-          })
-        }
+        <div className="list">
+          {
+            timing.map(({ speaker, theme, time }) => {
+              return (
+                <div className="speech" key={time[0]}>
+                  { speaker && <div className="speaker">{speaker}</div> }
+                  <div className="theme">{theme}</div>
+                  <div className="time">
+                    <span>{time[0]}</span> - <span>{time[1]}</span>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
     );
   }
