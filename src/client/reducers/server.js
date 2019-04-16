@@ -3,13 +3,11 @@ const defaultState = {
 };
 
 export default function reducer(state = defaultState, action) {
-  console.log('action');
-  console.log(action);
-  const { type, data } = action;
+  const { type, payload } = action;
 
   switch (type) {
     case 'config':
-      return { ...state, config: data };
+      return { ...state, config: payload };
     default:
       return state;
   }

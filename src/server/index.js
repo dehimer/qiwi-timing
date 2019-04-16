@@ -37,7 +37,7 @@ io.on('connection', (socket) => {
   can.emit('config:sync', socket);
 
   socket.on('action', (action) => {
-    const { type, data } = action;
+    const { type, payload } = action;
     switch (type) {
       // case 'server/send':
       //   can.emit('photo:send', data);
@@ -49,5 +49,5 @@ io.on('connection', (socket) => {
 
 can.on('config:sync', (socket = io) => {
   console.log('config:sync');
-  socket.emit('action', { type: 'config', data: config });
+  socket.emit('action', { type: 'config', payload: config });
 });

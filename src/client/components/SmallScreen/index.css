@@ -57,6 +57,12 @@
     text-align: center;
     font-family: Museo-Sans-Cyrl_1, Helvetica, sans-serif;
     font-size: 30px;
+    color: #cccccc
+}
+
+.smallscreen .theme.bigger {
+    font-family: Museo-Sans-Cyrl_3, Helvetica, sans-serif;
+    font-size: 40px;
 }
 
 .smallscreen .time {
