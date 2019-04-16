@@ -40,12 +40,9 @@ io.on('connection', (socket) => {
   socket.on('action', (action) => {
     const { type, data } = action;
     switch (type) {
-      case 'server/print':
-        can.emit('photo:print', data);
-        break;
-      case 'server/send':
-        can.emit('photo:send', data);
-        break;
+      // case 'server/send':
+      //   can.emit('photo:send', data);
+      //   break;
       default: console.log(`Unknown action ${type}`);
     }
   });

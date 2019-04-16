@@ -1,13 +1,13 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import SmallScreen from './components/SmallScreen';
-import BigScreen from './components/BigScreen';
+import { Switch, Route } from 'react-router-dom';
+import SmallScreen from './components/SmallScreen/index';
+import BigScreen from './components/BigScreen/index';
+
+import './app.css'
 
 export default () => (
-  <div>
-    <Switch>
-      <Route exact path="/client" component={SmallScreen} />
-      <Route exact path="/BigScreen" component={BigScreen} />
-    </Switch>
-  </div>
+  <Switch>
+    <Route path="/server" component={BigScreen} />
+    <Route path="/client" component={SmallScreen} />
+  </Switch>
 );
