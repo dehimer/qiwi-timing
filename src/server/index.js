@@ -13,11 +13,10 @@ let config = require(configPath);
 fs.watchFile(configPath, () => {
   delete require.cache[require.resolve(configPath)];
   config = require(configPath);
-  can.emit('config:sync');
 });
 
 // HTTP
-const port = config.port || 3000;
+const port = config.port;
 const app = express();
 const server = http.createServer(app);
 

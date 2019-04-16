@@ -6,9 +6,19 @@ import './index.css';
 
 class SmallScreen extends PureComponent {
   render() {
+    const { config } = this.props;
+    console.log(config);
+
+    const { timing } = config;
+    if (!timing) return null;
+
     return (
       <div className="smallscreen">
-        SMALL SCREEN
+        {
+          timing.map(({ theme, time }) => {
+            return <div key={time[0]}>{theme}</div>
+          })
+        }
       </div>
     );
   }

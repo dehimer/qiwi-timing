@@ -5,6 +5,7 @@ import { rootReducer } from '../reducers/index';
 import { port } from '../../../config/config';
 
 // eslint-disable-next-line no-restricted-globals
+
 const socket = io(`http://${location.hostname}:${port}`);
 const socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
 

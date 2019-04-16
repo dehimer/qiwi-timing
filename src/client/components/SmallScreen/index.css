@@ -6,4 +6,5 @@
     height: 100vh;
 
     background-color: red;
+    /*background: radial-gradient(ellipse farthest-corner at -100px -390px, #7e301f, #43210e);*/
 }
