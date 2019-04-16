@@ -45,6 +45,7 @@ SmallScreen.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   config: PropTypes.object.isRequired,
   selectSpeaker: PropTypes.func.isRequired,
+  speaker: PropTypes.number
 };
 
 const mapStateToProps = (state) => {

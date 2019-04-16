@@ -3,6 +3,51 @@
     width: 100vw;
     height: 100vh;
 
-    background-color: blue;
+    background: radial-gradient(ellipse farthest-corner at -100px -390px, #7e301f, #43210e);
+}
 
+.bigscreen .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    color: white;
+    font-size: 40px;
+
+    padding: 10vh;
+    font-family: Museo-Sans-Cyrl_0, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.bigscreen .theme {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    color: white;
+    font-size: 100px;
+
+    padding: 10vh;
+    font-family: Museo-Sans-Cyrl_1, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.bigscreen .theme .time {
+    margin-top: 10vh;
+    font-size: 80px;
+    font-family: Museo-Sans-Cyrl_1, Helvetica, sans-serif;
+}
+
+.bigscreen .speaker {
+    color: white;
+    font-size: 50px;
+    font-family: Museo-Sans-Cyrl_0, Helvetica, sans-serif;
 }
