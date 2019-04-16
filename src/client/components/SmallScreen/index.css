@@ -1,4 +1,6 @@
 .smallscreen {
+    display: flex;
+
     width: 100vw;
     height: 100vh;
 
@@ -7,15 +9,30 @@
     overflow-y: scroll;
 }
 
+.smallscreen .header {
+    position: absolute;
+    top: 0;
+
+    display: flex;
+    justify-content: flex-end;
+    height: 10vh;
+    width: 100vw;
+}
+
+.smallscreen .header img {
+    margin-right: -220px;
+}
+
 .smallscreen .list {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
 
     width: 100vw;
+    height: 90vh;
 
-    padding: 5vh 0;
+    padding-top: 10vh;
+    padding-bottom: 3vh;
 }
 
 .smallscreen .speech {

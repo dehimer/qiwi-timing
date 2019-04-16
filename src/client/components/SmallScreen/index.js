@@ -12,9 +12,11 @@ class SmallScreen extends PureComponent {
     const { timing } = config;
     if (!timing) return null;
 
-
     return (
       <div className="smallscreen">
+        <div className="header">
+          <img alt='back' src={`/public/qiwi_logo_cmyk.svg`} />
+        </div>
         <div className="list">
           {
             timing.map(({ id, speaker, theme, time }) => {
