@@ -22,7 +22,6 @@ class SmallScreen extends PureComponent {
         <div className="list" style={{ height: `${24 * timing.length}vh` }}>
           {
             timing.map(({ id, speaker, theme, time, color }) => {
-              console.log(`${id} === ${currentSpeakerId} ${id === currentSpeakerId}`);
               let backgroundColor = color ? hexToRgba(color, 0) : 'rgba(0,0,0,0)';
               if (color && id === currentSpeakerId) {
                 backgroundColor = hexToRgba(color, 0.2);
@@ -32,7 +31,7 @@ class SmallScreen extends PureComponent {
                 <div
                   key={id}
                   className="speech" style={{ backgroundColor }}
-                  onClick={() => selectSpeaker(id)}
+                  /*onClick={() => selectSpeaker(id)}*/
                 >
                   <div className="speakertime">
                     <div className="time">
