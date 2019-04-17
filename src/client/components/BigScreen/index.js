@@ -119,7 +119,20 @@ class BigScreen extends PureComponent {
                     : {height: '0', opacity: 0}
                 }
               >
-                <div className="description">{currentSpeaker && currentSpeaker.description}</div>
+                {
+                  currentSpeaker && (
+                    <Fragment>
+                      <div className="photoqrs">
+                        <img src={`/public/speakers/${currentSpeaker.photo}`} alt="photo"/>
+                        <img src={`/public/qrs/qr-qiwi-events-tim.svg`} alt="qrqiwi"/>
+                        <img src={`/public/qrs/qr-habr-com.svg`} alt="qrhabr"/>
+                        <img src={`/public/qrs/qr-youtube-com.svg`} alt="qryoutube"/>
+                      </div>
+                      <div className="description">{currentSpeaker.description}</div>
+                    </Fragment>
+                  )
+                }
+
               </div>
 
               <div

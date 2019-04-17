@@ -91,12 +91,27 @@
     transition: background-color 4s, top 4s, left 4s, width 4s, height 4s, transform 4s;
 }
 
-.bigscreen .long {
-    opacity: 0;
-    transition: height 4s, opacity 4s;
-}
-
 .bigscreen .short {
     opacity: 1;
     transition: height 4s, opacity 4s;
+}
+
+.bigscreen .long {
+    opacity: 0;
+    transition: height 4s, opacity 4s;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.bigscreen .long .photoqrs {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5vh;
+    height: 20vh;
+
+}
+
+.bigscreen .long .photoqrs > * {
+    max-height: 20vh;
 }
