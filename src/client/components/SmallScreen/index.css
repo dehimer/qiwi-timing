@@ -6,9 +6,7 @@
 
     background-color: white;
     overflow-y: scroll;
-    scroll-behavior: smooth;
     padding-top: 10vh;
-    overflow-scrolling: touch;
 }
 
 .smallscreen .header {

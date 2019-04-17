@@ -125,7 +125,9 @@ class BigScreen extends PureComponent {
                       }
                     >
                       <div className="photoqrs">
-                        { photo && <img src={`/public/speakers/${photo}`} alt="photo"/> }
+                        { photo && <img src={`/public/speakers/${photo}`} alt="photo" style={{
+                          opacity: isSelected ? 1 : 0,
+                        }}/> }
                       </div>
                       { description && <div className="description">{description}</div> }
 

@@ -131,6 +131,8 @@
     font-size: 3vh;
     color: white;
 
+    margin-top: 4vh;
+
     padding: 2vh 2vw;
 
     box-sizing: border-box;
@@ -143,10 +145,10 @@
     justify-content: space-around;
 
     height: 40vh;
-
 }
 
 .bigscreen .long .photoqrs > * {
-    height: 35vh;
-    width: 35vh;
+    object-fit: contain;
+    transition: opacity 6s;
+    min-height: 40vh;
 }
