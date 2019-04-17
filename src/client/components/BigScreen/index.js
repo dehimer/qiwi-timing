@@ -40,27 +40,30 @@ class BigScreen extends PureComponent {
           </div>
         )
     } else {*/
-      const buzySpaces = [];
-      const findFreePosition = (size) => {
-        const top = (100-size)*Math.random();
-        const left = (100-size)*Math.random();
 
-        const foundOverlay = buzySpaces.find(space => {
-          return !(
-            space.left > (left + size) ||
-            (space.left + space.size) < left ||
-            space.top > (top + size) ||
-            (space.top + space.size) < top
-          );
-        });
+    const currentSpeaker = timing.find(({id}) => id === currentSpeakerId);
 
-        if (foundOverlay) {
-          return findFreePosition(size);
-        } else {
-          return [top, left];
-        }
+    const buzySpaces = [];
+    const findFreePosition = (size) => {
+      const top = (100-size)*Math.random();
+      const left = (100-size)*Math.random();
 
-      };
+      const foundOverlay = buzySpaces.find(space => {
+        return !(
+          space.left > (left + size) ||
+          (space.left + space.size) < left ||
+          space.top > (top + size) ||
+          (space.top + space.size) < top
+        );
+      });
+
+      if (foundOverlay) {
+        return findFreePosition(size);
+      } else {
+        return [top, left];
+      }
+
+    };
 
     const content = timing.filter(({speaker}) => !!speaker).map(({ id, time, speaker, theme, color }) => {
         // const backgroundColor = hexToRgba(color, 0.1);
@@ -89,7 +92,7 @@ class BigScreen extends PureComponent {
 
         const speakerStyles = {
           backgroundColor: hexToRgba(color, isSelected ? 0.5 : 0.1),
-          opacity: !isSelected && currentSpeakerId ? 0 : 1,
+          opacity: !isSelected && currentSpeakerId && currentSpeaker.speaker ? 0 : 1,
           zIndex: isSelected ? 10: 1,
           height: `${size}vh`,
           width: `${size}vw`,
