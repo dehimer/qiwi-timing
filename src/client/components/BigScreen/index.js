@@ -19,13 +19,15 @@ class BigScreen extends PureComponent {
   }
 
   render() {
+    console.log('render');
     const { config, speaker: currentSpeakerId } = this.props;
+    // console.log(`currentSpeakerId: ${currentSpeakerId}`);
 
     const { timing } = config;
     if (!timing) return null;
 
-    let content = null;
-    if (currentSpeakerId) {
+    // let content = null;
+    /*if (currentSpeakerId) {
       const { description, theme, time } = timing.find(({ id }) => id === currentSpeakerId);
       content = description
         ? (<div className="description">{description}</div>)
@@ -37,7 +39,7 @@ class BigScreen extends PureComponent {
             </div>
           </div>
         )
-    } else {
+    } else {*/
       const buzySpaces = [];
       const findFreePosition = (size) => {
         const top = (100-size)*Math.random();
@@ -60,28 +62,41 @@ class BigScreen extends PureComponent {
 
       };
 
-      content = timing.filter(({speaker}) => !!speaker).map(({ id, time, speaker, theme, color }) => {
+    const content = timing.filter(({speaker}) => !!speaker).map(({ id, time, speaker, theme, color }) => {
         // const backgroundColor = hexToRgba(color, 0.1);
         // const scale =
-        const sizeCoefficient = 1;/* + Math.random()*/;
-        const size = 15 * sizeCoefficient;
+        const isSelected = id === currentSpeakerId;
+
+        const sizeCoefficient = 1;/* + Math.random();*/
+        const size = isSelected ? 100 : 15 * sizeCoefficient;
         const fontSize = size;
 
-        const [top, left] = findFreePosition(size*0.9);
+        // console.log(`${id} === ${currentSpeakerId} ${isSelected}`);
+        let top = 0;
+        let left = 0;
 
-        buzySpaces.push({
-          top,
-          left,
-          size
-        });
+        if (!isSelected) {
+          console.log('findFreePosition');
+          [top, left] = findFreePosition(size*0.9);
+
+          buzySpaces.push({
+            id,
+            top,
+            left,
+            size
+          });
+        }
 
         const speakerStyles = {
-          backgroundColor: hexToRgba(color, 0.1),
+          backgroundColor: hexToRgba(color, isSelected ? 0.5 : 0.1),
+          opacity: !isSelected && currentSpeakerId ? 0 : 1,
+          zIndex: isSelected ? 10: 1,
           height: `${size}vh`,
           width: `${size}vw`,
           top: `${top}vh`,
           left: `${left}vw`,
           fontSize: `${fontSize}px`
+
         };
 
         const rayTopStyles = {
@@ -111,12 +126,11 @@ class BigScreen extends PureComponent {
               <div className="person">{speaker}</div>
               <div className="point">{theme}</div>
             </div>
-            <div className="ray-top" style={rayTopStyles}/>
-            <div className="ray-left" style={rayLeftStyles}/>
+            { !isSelected && <div className="ray-top" style={rayTopStyles}/> }
+            { !isSelected && <div className="ray-left" style={rayLeftStyles}/> }
           </Fragment>
         )
-      })
-    }
+      });
 
     return (
       <div className="bigscreen">

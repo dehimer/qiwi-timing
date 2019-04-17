@@ -39,6 +39,9 @@ io.attach(server);
 
 io.on('connection', (socket) => {
   can.emit('config:sync', socket);
+  if (state.speaker) {
+    can.emit('speaker:select', state.speaker, socket);
+  }
 
   socket.on('action', (action) => {
     console.log('action');
