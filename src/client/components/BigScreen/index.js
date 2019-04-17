@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import './index.css';
 import hexToRgba from "hex-to-rgba";
+import classNames from "classnames";
 
 class BigScreen extends PureComponent {
   state = {
@@ -25,21 +26,6 @@ class BigScreen extends PureComponent {
 
     const { timing } = config;
     if (!timing) return null;
-
-    // let content = null;
-    /*if (currentSpeakerId) {
-      const { description, theme, time } = timing.find(({ id }) => id === currentSpeakerId);
-      content = description
-        ? (<div className="description">{description}</div>)
-        : (
-          <div className="theme">
-            <div>{theme}</div>
-            <div className="time">
-              <span>{time[0]}</span> - <span>{time[1]}</span>
-            </div>
-          </div>
-        )
-    } else {*/
 
     const currentSpeaker = timing.find(({id}) => id === currentSpeakerId);
 
@@ -125,9 +111,29 @@ class BigScreen extends PureComponent {
         return (
           <Fragment key={id} >
             <div className="speaker" style={speakerStyles}>
-              <div className="time"><span>{time[0]}</span> - <span>{time[1]}</span></div>
-              <div className="person">{speaker}</div>
-              <div className="point">{theme}</div>
+              <div
+                className="long"
+                style={
+                  isSelected
+                    ? {height: '100%', opacity: 1}
+                    : {height: '0', opacity: 0}
+                }
+              >
+                <div className="description">{currentSpeaker && currentSpeaker.description}</div>
+              </div>
+
+              <div
+                className="short"
+                style={
+                  !isSelected
+                    ? {height: '100%', opacity: 1}
+                    : {height: '0', opacity: 0}
+                }
+              >
+                <div className="time"><span>{time[0]}</span> - <span>{time[1]}</span></div>
+                <div className="person">{speaker}</div>
+                <div className="point">{theme}</div>
+              </div>
             </div>
             { !isSelected && <div className="ray-top" style={rayTopStyles}/> }
             { !isSelected && <div className="ray-left" style={rayLeftStyles}/> }
