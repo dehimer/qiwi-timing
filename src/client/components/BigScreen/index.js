@@ -15,7 +15,7 @@ class BigScreen extends PureComponent {
       this.setState({
         counter: this.state.counter + 1,
       })
-    }, 5000);
+    }, 15000);
   }
 
   render() {
@@ -38,24 +38,54 @@ class BigScreen extends PureComponent {
           </div>
         )
     } else {
-      content = timing.map(({ id, speaker, theme, color }) => {
+      const buzySpaces = [];
+      const findFreePosition = (size) => {
+        const top = (100-size)*Math.random();
+        const left = (100-size)*Math.random();
+
+        const foundOverlay = buzySpaces.find(space => {
+          return !(
+            space.left > (left + size) ||
+            (space.left + space.size) < left ||
+            space.top > (top + size) ||
+            (space.top + space.size) < top
+          );
+        });
+
+        if (foundOverlay) {
+          return findFreePosition(size);
+        } else {
+          return [top, left];
+        }
+
+      };
+
+      content = timing.filter(({speaker}) => !!speaker).map(({ id, time, speaker, theme, color }) => {
         const backgroundColor = hexToRgba(color, 0.1);
         const sizeCoefficient = 0.5 + Math.random();
         const size = 15 * sizeCoefficient;
         const fontSize = size;
 
+        const [top, left] = findFreePosition(size*0.9);
+
+        buzySpaces.push({
+          top,
+          left,
+          size
+        });
 
         const styles = {
           backgroundColor,
           height: `${size}vh`,
           width: `${size}vw`,
-          top: `${(100-size)*Math.random()}vh`,
-          left: `${(100-size)*Math.random()}vw`,
+          top: `${top}vh`,
+          left: `${left}vw`,
           fontSize: `${fontSize}px`
         };
 
         return (
           <div key={id} className="speaker" style={styles}>
+            <div><span>{time[0]}</span> - <span>{time[1]}</span></div>
             <div>{speaker}</div>
             <div>{theme}</div>
           </div>

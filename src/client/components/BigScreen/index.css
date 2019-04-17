@@ -50,6 +50,13 @@
     position: absolute;
     color: white;
     font-size: 50px;
-    font-family: Museo-Sans-Cyrl_0, Helvetica, sans-serif;
-    transition: background-color 2s, top 2s, left 2s, width 2s, height 2s;
+    font-family: Museo-Sans-Cyrl_1, Helvetica, sans-serif;
+    transition: background-color 2s, top 2s, left 2s, width 2s, height 2s, font-size 2s;
+    box-sizing: border-box;
+
+    padding: 1vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
