@@ -17,6 +17,8 @@
     justify-content: flex-end;
     height: 10vh;
     width: 100vw;
+
+    background-color: white;
 }
 
 .smallscreen .header img {
