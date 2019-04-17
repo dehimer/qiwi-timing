@@ -4,12 +4,13 @@
     height: 100vh;
 
     background-color: #0e1022;
+    overflow: hidden;
 }
 
 .bigscreen .description {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 
     width: 100vw;
@@ -48,10 +49,11 @@
 
 .bigscreen .speaker {
     position: absolute;
+    z-index: 1;
     color: white;
     font-size: 50px;
     font-family: Museo-Sans-Cyrl_1, Helvetica, sans-serif;
-    transition: background-color 2s, top 2s, left 2s, width 2s, height 2s, font-size 2s;
+    transition: background-color 4s, top 4s, left 4s, width 4s, height 4s;
     box-sizing: border-box;
 
     padding: 1vh;
@@ -59,4 +61,31 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.bigscreen .speaker .time {
+    font-size: 30px;
+    font-family: Museo-Sans-Cyrl, Helvetica, sans-serif;
+}
+
+.bigscreen .speaker .person {
+    font-size: 25px;
+    font-family: Museo-Sans-Cyrl_1, Helvetica, sans-serif;
+}
+
+.bigscreen .speaker .point {
+    font-size: 18px;
+    font-family: Museo-Sans-Cyrl, Helvetica, sans-serif;
+}
+
+.bigscreen .ray-top {
+    position: absolute;
+    z-index: 0;
+    transition: background-color 4s, top 4s, left 4s, width 4s, height 4s, transform 4s;
+}
+
+.bigscreen .ray-bottom {
+    position: absolute;
+    z-index: 0;
+    transition: background-color 4s, top 4s, left 4s, width 4s, height 4s, transform 4s;
 }

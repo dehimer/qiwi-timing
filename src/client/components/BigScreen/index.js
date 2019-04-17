@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -61,8 +61,9 @@ class BigScreen extends PureComponent {
       };
 
       content = timing.filter(({speaker}) => !!speaker).map(({ id, time, speaker, theme, color }) => {
-        const backgroundColor = hexToRgba(color, 0.1);
-        const sizeCoefficient = 0.5 + Math.random();
+        // const backgroundColor = hexToRgba(color, 0.1);
+        // const scale =
+        const sizeCoefficient = 1;/* + Math.random()*/;
         const size = 15 * sizeCoefficient;
         const fontSize = size;
 
@@ -74,8 +75,8 @@ class BigScreen extends PureComponent {
           size
         });
 
-        const styles = {
-          backgroundColor,
+        const speakerStyles = {
+          backgroundColor: hexToRgba(color, 0.1),
           height: `${size}vh`,
           width: `${size}vw`,
           top: `${top}vh`,
@@ -83,12 +84,36 @@ class BigScreen extends PureComponent {
           fontSize: `${fontSize}px`
         };
 
+        const rayTopStyles = {
+          backgroundColor: color,
+          opacity: 0.1,
+          width: `${size}vw`,
+          height:  `${Math.abs(50-top)}vh`,
+          top: top < 50 ? `${top}vh` : `50vh`,
+          left: `${left}vw`,
+          // transform: `skewX(${(left+size/2)-50}deg)`
+        };
+
+        const rayBottomStyles = {
+          backgroundColor: color,
+          opacity: 0.1,
+          height:  `${size}vh`,
+          width:  `${Math.abs(50-left)}vw`,
+          top: `${top}vh`,
+          left: left < 50 ? `${left}vw` : `50vw`,
+          // transform: `skewX(${(left+size/2)-50}deg)`
+        };
+
         return (
-          <div key={id} className="speaker" style={styles}>
-            <div><span>{time[0]}</span> - <span>{time[1]}</span></div>
-            <div>{speaker}</div>
-            <div>{theme}</div>
-          </div>
+          <Fragment key={id} >
+            <div className="speaker" style={speakerStyles}>
+              <div className="time"><span>{time[0]}</span> - <span>{time[1]}</span></div>
+              <div className="person">{speaker}</div>
+              <div className="point">{theme}</div>
+            </div>
+            <div className="ray-top" style={rayTopStyles}/>
+            <div className="ray-bottom" style={rayBottomStyles}/>
+          </Fragment>
         )
       })
     }
