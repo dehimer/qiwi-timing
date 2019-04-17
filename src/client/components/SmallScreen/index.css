@@ -75,7 +75,7 @@
     text-align: center;
 
     font-size: 2.5vh;
-    font-family: Museo-Sans-Cyrl_0, Helvetica, sans-serif;
+    /*font-family: Museo-Sans-Cyrl_0, Helvetica, sans-serif;*/
 }
 
 .smallscreen .time {
@@ -89,7 +89,7 @@
     align-items: center;
 
     font-size: 3vh;
-    font-family: Museo-Sans-Cyrl, Helvetica, sans-serif;
+    /*font-family: Museo-Sans-Cyrl, Helvetica, sans-serif;*/
 }
 
 .smallscreen .theme {
@@ -101,7 +101,7 @@
     text-align: center;
     align-items: center;
 
-    font-family: Museo-Sans-Cyrl_0, Helvetica, sans-serif;
+    /*font-family: Museo-Sans-Cyrl_0, Helvetica, sans-serif;*/
     font-size: 3vh;
     color: #777777;
     padding-left: 1vw;
@@ -109,7 +109,7 @@
 }
 
 .smallscreen .theme.bigger {
-    font-family: Museo-Sans-Cyrl_2, Helvetica, sans-serif;
+    /*font-family: Museo-Sans-Cyrl_2, Helvetica, sans-serif;*/
     font-size: 5vh;
 }
 
