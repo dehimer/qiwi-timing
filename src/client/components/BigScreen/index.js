@@ -94,7 +94,7 @@ class BigScreen extends PureComponent {
           // transform: `skewX(${(left+size/2)-50}deg)`
         };
 
-        const rayBottomStyles = {
+        const rayLeftStyles = {
           backgroundColor: color,
           opacity: 0.1,
           height:  `${size}vh`,
@@ -112,7 +112,7 @@ class BigScreen extends PureComponent {
               <div className="point">{theme}</div>
             </div>
             <div className="ray-top" style={rayTopStyles}/>
-            <div className="ray-bottom" style={rayBottomStyles}/>
+            <div className="ray-left" style={rayLeftStyles}/>
           </Fragment>
         )
       })
