@@ -7,21 +7,35 @@
     overflow: hidden;
 }
 
-.bigscreen .description {
+.bigscreen .qrs {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 
-    width: 100vw;
+    height: 100vh;
+    width: 16vw;
+
+    background-color: #2b2b5a;
+
+    overflow: hidden;
+}
+
+.bigscreen .qrs > * {
+    height: 12vw;
+    width: 12vw;
+}
+
+.bigscreen .timing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 84vw;
     height: 100vh;
 
-    color: white;
-    font-size: 40px;
-
-    padding: 10vh;
-
-    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .bigscreen .theme {
@@ -30,7 +44,7 @@
     justify-content: center;
     align-items: center;
 
-    width: 100vw;
+    width: 84vw;
     height: 100vh;
 
     color: white;
@@ -103,6 +117,7 @@
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .bigscreen .long .description {
@@ -111,25 +126,27 @@
     justify-content: space-around;
     align-items: center;
 
-    width: 100vw;
+    width: 84vw;
 
     font-size: 3vh;
     color: white;
 
-    padding: 10vh;
+    padding: 2vh 2vw;
 
     box-sizing: border-box;
+
+    font-family: Museo-Sans-Cyrl, Helvetica, sans-serif;
 }
 
 .bigscreen .long .photoqrs {
     display: flex;
     justify-content: space-around;
-    padding-top: 5vh;
-    height: 20vh;
+
+    height: 40vh;
 
 }
 
 .bigscreen .long .photoqrs > * {
-    height: 25vh;
-    width: 25vh;
+    height: 35vh;
+    width: 35vh;
 }
