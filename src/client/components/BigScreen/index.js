@@ -20,7 +20,7 @@ class BigScreen extends PureComponent {
   }
 
   render() {
-    console.log('render');
+    // console.log('render');
     const { config, speaker: currentSpeakerId } = this.props;
     // console.log(`currentSpeakerId: ${currentSpeakerId}`);
 
@@ -51,9 +51,7 @@ class BigScreen extends PureComponent {
 
     };
 
-    const content = timing.filter(({speaker}) => !!speaker).map(({ id, time, speaker, theme, color }) => {
-        // const backgroundColor = hexToRgba(color, 0.1);
-        // const scale =
+    const content = timing.filter(({speaker}) => !!speaker).map(({ id, time, speaker, theme, color, photo, description }) => {
         const isSelected = id === currentSpeakerId;
 
         const sizeCoefficient = 1;/* + Math.random();*/
@@ -65,7 +63,7 @@ class BigScreen extends PureComponent {
         let left = 0;
 
         if (!isSelected) {
-          console.log('findFreePosition');
+          // console.log('findFreePosition');
           [top, left] = findFreePosition(size*0.9);
 
           buzySpaces.push({
@@ -119,19 +117,13 @@ class BigScreen extends PureComponent {
                     : {height: '0', opacity: 0}
                 }
               >
-                {
-                  currentSpeaker && (
-                    <Fragment>
-                      <div className="photoqrs">
-                        <img src={`/public/speakers/${currentSpeaker.photo}`} alt="photo"/>
-                        <img src={`/public/qrs/qr-qiwi-events-tim.svg`} alt="qrqiwi"/>
-                        <img src={`/public/qrs/qr-habr-com.svg`} alt="qrhabr"/>
-                        <img src={`/public/qrs/qr-youtube-com.svg`} alt="qryoutube"/>
-                      </div>
-                      <div className="description">{currentSpeaker.description}</div>
-                    </Fragment>
-                  )
-                }
+                <div className="photoqrs">
+                  { photo && <img src={`/public/speakers/${photo}`} alt="photo"/> }
+                  <img src={`/public/qrs/qr-qiwi-events-tim.svg`} alt="qrqiwi"/>
+                  <img src={`/public/qrs/qr-habr-com.svg`} alt="qrhabr"/>
+                  <img src={`/public/qrs/qr-youtube-com.svg`} alt="qryoutube"/>
+                </div>
+                { description && <div className="description">{description}</div> }
 
               </div>
 

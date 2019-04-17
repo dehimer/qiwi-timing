@@ -20,7 +20,7 @@
     font-size: 40px;
 
     padding: 10vh;
-    font-family: Museo-Sans-Cyrl_0, Helvetica, sans-serif;
+
     box-sizing: border-box;
 }
 
@@ -97,11 +97,28 @@
 }
 
 .bigscreen .long {
+    overflow: hidden;
     opacity: 0;
-    transition: height 4s, opacity 4s;
+    transition: height 2s, opacity 4s;
 
     display: flex;
     flex-direction: column;
+}
+
+.bigscreen .long .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100vw;
+
+    font-size: 3vh;
+    color: white;
+
+    padding: 10vh;
+
+    box-sizing: border-box;
 }
 
 .bigscreen .long .photoqrs {
@@ -113,5 +130,6 @@
 }
 
 .bigscreen .long .photoqrs > * {
-    max-height: 20vh;
+    height: 25vh;
+    width: 25vh;
 }
