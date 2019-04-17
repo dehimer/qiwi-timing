@@ -44,6 +44,7 @@ const config = {
       id: 4,
       time: ['20:00', '20:20'],
       theme: 'ПЕРЕРЫВ',
+      color: '#444444'
     },{
       id: 5,
       speaker: 'Стас Дубров',
@@ -75,6 +76,7 @@ const config = {
       id: 8,
       time: ['21:20', '22:30'],
       theme: 'СВОБОДНОЕ ОБЩЕНИЕ',
+      color: '#444444'
     },
   ],
   autoUnselectTime: 10

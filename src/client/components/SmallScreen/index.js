@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 
+import hexToRgba from 'hex-to-rgba';
+
 import './index.css';
 
 class SmallScreen extends PureComponent {
@@ -19,18 +21,26 @@ class SmallScreen extends PureComponent {
         </div>
         <div className="list">
           {
-            timing.map(({ id, speaker, theme, time }) => {
+            timing.map(({ id, speaker, theme, time, color }) => {
+              console.log(`${id} === ${currentSpeakerId} ${id === currentSpeakerId}`);
+              let backgroundColor = color ? hexToRgba(color, 0) : 'rgba(0,0,0,0)';
+              if (color && id === currentSpeakerId) {
+                backgroundColor = hexToRgba(color, 0.2);
+              }
+
               return (
                 <div
                   key={id}
-                  className={classNames({speech: true, selected: id === currentSpeakerId})}
+                  className="speech" style={{ backgroundColor }}
                   onClick={() => selectSpeaker(id)}
                 >
-                  { speaker && <div className="speaker">{speaker}</div> }
-                  <div className={classNames({theme: true, bigger: !speaker})}>{theme}</div>
-                  <div className="time">
-                    <span>{time[0]}</span> - <span>{time[1]}</span>
+                  <div className="speakertime">
+                    <div className="time">
+                      <span>{time[0]}</span> - <span>{time[1]}</span>
+                    </div>
+                    { speaker && <div className="speaker">{speaker}</div> }
                   </div>
+                  <div className={classNames({theme: true, bigger: !speaker})}>{theme}</div>
                 </div>
               )
             })
