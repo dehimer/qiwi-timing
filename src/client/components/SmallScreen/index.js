@@ -19,7 +19,7 @@ class SmallScreen extends PureComponent {
         <div className="header">
           <img alt='back' src={`/public/qiwi_logo_cmyk.svg`} />
         </div>
-        <div className="list">
+        <div className="list" style={{ height: `${24 * timing.length}vh` }}>
           {
             timing.map(({ id, speaker, theme, time, color }) => {
               console.log(`${id} === ${currentSpeakerId} ${id === currentSpeakerId}`);

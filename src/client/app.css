@@ -22,3 +22,7 @@
     font-family: "Museo-Sans-Cyrl_3";
     src: url("/public/fonts/Museo-Sans-Cyrl/MuseoSansCyrl_3.otf") format("opentype");
 }
+
+.body {
+    overflow: hidden;
+}
