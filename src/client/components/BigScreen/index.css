@@ -3,7 +3,7 @@
     width: 100vw;
     height: 100vh;
 
-    background: radial-gradient(ellipse farthest-corner at -100px -390px, #7e301f, #43210e);
+    background-color: #0e1022;
 }
 
 .bigscreen .description {
@@ -47,7 +47,9 @@
 }
 
 .bigscreen .speaker {
+    position: absolute;
     color: white;
     font-size: 50px;
     font-family: Museo-Sans-Cyrl_0, Helvetica, sans-serif;
+    transition: background-color 2s, top 2s, left 2s, width 2s, height 2s;
 }
