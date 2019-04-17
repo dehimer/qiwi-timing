@@ -6,6 +6,7 @@
 
     background-color: white;
     overflow-y: scroll;
+    scroll-behavior: smooth;
     padding-top: 10vh;
 }
 
@@ -45,6 +46,8 @@
 
     box-sizing: border-box;
     transition: background-color 1s;
+
+    cursor: pointer;
 }
 
 .smallscreen .speakertime {
